@@ -54,6 +54,13 @@ Designed for easier transition from a full size keyboard.
 ```
 - nothing special here
 
+### RHINO
+```
+KEYMAP HERE
+```
+- rhino shortcuts
+- to be defined
+
 ### LOWER
 ```
 ,-----------------------------------------------------------------------------------.
