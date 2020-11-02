@@ -13,7 +13,7 @@ Designed for easier transition from a full size keyboard.
 |------+------+------+------+------+-------------+------+------+------+------+------|
 | Esc  |   A  |   S  |   D  |   F  |   G  |   H  |   J  |   K  |   L  |   ;  |  "   |
 |------+------+------+------+------+------|------+------+------+------+------+------|
-| Shift|   /  |   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |Enter |
+| Shift|   Z  |   X  |   C  |   V  |   B  |   N  |   M  |   ,  |   .  |   /  |Enter |
 |------+------+------+------+------+------+------+------+------+------+------+------|
 | LCtrl|RGBTog| GUI  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
 `-----------------------------------------------------------------------------------'
@@ -21,7 +21,6 @@ Designed for easier transition from a full size keyboard.
 - moved LCtrl to corner
 - default Fn key replaced with RGB lighting toggle as pcb has no per switch led support
 - OS and LAlt keys switched to windows mode
-- lowest row alphas moved one space right, fwdSlash moved to far left
 
 ### COLEMAK
 ```
@@ -32,7 +31,7 @@ Designed for easier transition from a full size keyboard.
 |------+------+------+------+------+-------------+------+------+------+------+------|
 | Esc  |   A  |   R  |   S  |   T  |   D  |   H  |   N  |   E  |   I  |   O  |  "   |
 |------+------+------+------+------+------|------+------+------+------+------+------|
-| Shift|   /  |   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |Enter |
+| Shift|   Z  |   X  |   C  |   V  |   B  |   K  |   M  |   ,  |   .  |   /  |Enter |
 |------+------+------+------+------+------+------+------+------+------+------+------|
 | LCtrl|RGBTog| GUI  | Alt  |Lower |    Space    |Raise | Left | Down |  Up  |Right |
 `-----------------------------------------------------------------------------------'
