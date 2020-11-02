@@ -10,7 +10,7 @@
                 "_UNICODE"
             ],
             "intelliSenseMode": "msvc-x64",
-            "compilerPath": ""
+            "compilerPath": "/d/msys2/mingw64/bin/qmk.exe"
         }
     ],
     "version": 4
