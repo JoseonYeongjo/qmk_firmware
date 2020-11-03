@@ -1,8 +1,10 @@
 #pragma once
 
+#undef RGBLIGHT_ANIMATIONS
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PREONIC_SOUND)
     // #define STARTUP_SONG SONG(NO_SOUND)
+    #define NOINPUT_SOUND Q__NOTE(_C4), E__NOTE(_REST), Q__NOTE(_C4)
 
     #define DEFAULT_LAYER_SONGS { SONG(QWERTY_SOUND), \
                                   SONG(COLEMAK_SOUND), \

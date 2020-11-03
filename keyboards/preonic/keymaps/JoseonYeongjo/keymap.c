@@ -39,6 +39,8 @@ enum preonic_keycodes {
 //BACKLIT
 };
 
+float NOINPUTsong[][2] = SONG(NOINPUT_SOUND);
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Qwerty
@@ -235,6 +237,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case NOINPUT:
           if (record->event.pressed) {
             layer_invert(_NOINPUT);
+            PLAY_SONG(NOINPUTsong);
           }
           return false;
           break;
@@ -284,6 +287,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
     return true;
 };
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+  switch(get_highest_layer(state)) {
+    case _QWERTY:
+    case _COLEMAK:
+    case _DVORAK:
+      rgblight_setrgb(0xFF, 0xFF, 0xFF);
+      break;
+    case _NOINPUT:
+      rgblight_setrgb(0xFF, 0x00, 0x00);
+      break;
+    case _RHINO:
+      rgblight_setrgb(0x00, 0xFF, 0x00);
+      break;
+    case _LOWER:
+      rgblight_setrgb(0xAA, 0x00, 0xFF);
+      break;
+    case _RAISE:
+      rgblight_setrgb(0xFF, 0xCA, 0x00);
+      break;
+    case _ADJUST:
+      rgblight_setrgb(0x47, 0x6E, 0x6A);
+      break;
+  }
+  return state;
+} 
 
 bool muse_mode = false;
 uint8_t last_muse_note = 0;
@@ -335,6 +364,9 @@ void dip_switch_update_user(uint8_t index, bool active) {
     }
 }
 
+void matrix_init_user(void) {
+  rgblight_setrgb(0x00, 0x00, 0x00);
+}
 
 void matrix_scan_user(void) {
 #ifdef AUDIO_ENABLE
