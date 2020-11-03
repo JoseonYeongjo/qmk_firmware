@@ -21,6 +21,7 @@ enum preonic_layers {
   _QWERTY,
   _COLEMAK,
   _DVORAK,
+  _NOINPUT,
   _RHINO,
   _LOWER,
   _RAISE,
@@ -31,6 +32,8 @@ enum preonic_keycodes {
   QWERTY = SAFE_RANGE,
   COLEMAK,
   DVORAK,
+  NOINPUT,
+  RHINO,
   LOWER,
   RAISE,
 //BACKLIT
@@ -101,6 +104,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTL, RGB_TOG, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
+/* NoInput
+ * ,-----------------------------------------------------------------------------------.
+ * |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |  NO  |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |  NO  |  NO  |  NO  |  NO  | Lower|   N O P E   | Raise|  NO  |  NO  |  NO  |  NO  |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_NOINPUT] = LAYOUT_preonic_grid(
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+    KC_NO,   KC_NO,   KC_NO,   KC_NO,   LOWER,   KC_NO,   KC_NO,   RAISE,   KC_NO,   KC_NO,   KC_NO,   KC_NO
+),
+
 /* Rhino
  * ,-----------------------------------------------------------------------------------.
  * |      |      |      |      |      |      |      |      |      |      |      |      |
@@ -166,11 +190,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Adjust (Lower + Raise)
  * ,-----------------------------------------------------------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
+ * |  F1  |Qwerty|Colmak|Dvorak|NoInpt| Rhino|  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      | Reset|      |      |      |      |      |      |      |      |      |  Del |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      |      |      |Aud on|AudOff|AGnorm|AGswap|Qwerty|Colemk|Dvorak|      |      |
+ * |      |      |      |Aud on|AudOff|AGnorm|AGswap|      |      |      |      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
  * |      |Voice-|Voice+|Mus on|MusOff|MidiOn|MidOff|      |      |      |      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
@@ -178,10 +202,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_ADJUST] = LAYOUT_preonic_grid(
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,
-  _______, RESET,   DEBUG,   _______, _______, _______, _______, TERM_ON, TERM_OFF,_______, _______, KC_DEL,
-  _______, _______, MU_MOD,  AU_ON,   AU_OFF,  AG_NORM, AG_SWAP, QWERTY,  COLEMAK, DVORAK,  _______, _______,
-  _______, MUV_DE,  MUV_IN,  MU_ON,   MU_OFF,  MI_ON,   MI_OFF,  _______, _______, _______, _______, _______,
+    RESET,  QWERTY, COLEMAK,  DVORAK, NOINPUT,   RHINO,   KC_F7,   KC_F8,   KC_F9,  KC_F10,  KC_F11,  KC_F12,
+    DEBUG, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,  KC_DEL,
+  _______, _______,  MU_MOD,   AU_ON,  AU_OFF, AG_NORM, AG_SWAP, _______, _______, _______, _______, _______,
+  _______,  MUV_DE,  MUV_IN,   MU_ON,  MU_OFF,   MI_ON,  MI_OFF, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 )
 
@@ -205,6 +229,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DVORAK:
           if (record->event.pressed) {
             set_single_persistent_default_layer(_DVORAK);
+          }
+          return false;
+          break;
+        case NOINPUT:
+          if (record->event.pressed) {
+            layer_invert(_NOINPUT);
+          }
+          return false;
+          break;
+        case RHINO:
+          if (record->event.pressed) {
+            layer_invert(_RHINO);
           }
           return false;
           break;
