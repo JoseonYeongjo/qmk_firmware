@@ -35,8 +35,7 @@ enum preonic_keycodes {
   NOINPUT,
   RHINO,
   LOWER,
-  RAISE,
-//BACKLIT
+  RAISE
 };
 
 float NOINPUTsong[][2] = SONG(NOINPUT_SOUND);
@@ -267,23 +266,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
-//      case BACKLIT:
-//        if (record->event.pressed) {
-//          register_code(KC_RSFT);
-//          #ifdef BACKLIGHT_ENABLE
-//            backlight_step();
-//          #endif
-//          #ifdef __AVR__
-//          writePinLow(E6);
-//          #endif
-//        } else {
-//          unregister_code(KC_RSFT);
-//          #ifdef __AVR__
-//          writePinHigh(E6);
-//          #endif
-//        }
-//        return false;
-//        break;
       }
     return true;
 };
@@ -293,7 +275,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case _QWERTY:
     case _COLEMAK:
     case _DVORAK:
-      rgblight_setrgb(0xFF, 0xFF, 0xFF);
+      rgblight_setrgb(0x50, 0xFF, 0xFF);
       break;
     case _NOINPUT:
       rgblight_setrgb(0xFF, 0x00, 0x00);
@@ -302,13 +284,13 @@ layer_state_t layer_state_set_user(layer_state_t state) {
       rgblight_setrgb(0x00, 0xFF, 0x00);
       break;
     case _LOWER:
-      rgblight_setrgb(0xAA, 0x00, 0xFF);
+      rgblight_setrgb(0x60, 0x00, 0xFF);
       break;
     case _RAISE:
       rgblight_setrgb(0xFF, 0xCA, 0x00);
       break;
     case _ADJUST:
-      rgblight_setrgb(0x47, 0x6E, 0x6A);
+      rgblight_setrgb(0x00, 0xFF, 0xFF);
       break;
   }
   return state;
