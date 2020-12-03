@@ -35,10 +35,10 @@ enum preonic_keycodes {
   NOINPUT,
   RHINO,
   LOWER,
-  RAISE
-//  RHBOX,
-//  RHRECT,
-// RHLINE,
+  RAISE,
+  RHBOX,
+  RHRECT,
+  RHLINE
 };
 
 float NOINPUTsong[][2] = SONG(NOINPUT_SOUND);
@@ -143,10 +143,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * `-----------------------------------------------------------------------------------'
  */
 [_RHINO] = LAYOUT_preonic_grid(
+  _______,  RHLINE, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______,  RHRECT, _______, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______,   RHBOX, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -266,6 +266,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           } else {
             layer_off(_RAISE);
             update_tri_layer(_LOWER, _RAISE, _ADJUST);
+          }
+          return false;
+          break;
+        case RHLINE:
+          if (record->event.pressed) {
+            SEND_STRING("! _Line ");
+          }
+          return false;
+          break;
+        case RHRECT:
+          if (record->event.pressed) {
+            SEND_STRING("! _Rectangle ");
+          }
+          return false;
+          break;
+        case RHBOX:
+          if (record->event.pressed) {
+            SEND_STRING("! _Box ");
           }
           return false;
           break;
