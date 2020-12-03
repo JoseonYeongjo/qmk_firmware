@@ -35,7 +35,10 @@ enum preonic_keycodes {
   NOINPUT,
   RHINO,
   LOWER,
-  RAISE
+  RAISE,
+  RHBOX,
+  RHRECT,
+  RHLINE,
 };
 
 float NOINPUTsong[][2] = SONG(NOINPUT_SOUND);

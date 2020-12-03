@@ -1,6 +1,11 @@
 #pragma once
 
 #define MK_3_SPEED
+#define MK_C_INTERVAL_0 16
+#define MK_C_OFFSET_1 3
+#define MK_C_INTERVAL_1 7
+#define MK_C_OFFSET_2 12
+#define MK_C_INTERVAL_2 7
 #undef RGBLIGHT_ANIMATIONS
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PREONIC_SOUND)
