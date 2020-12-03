@@ -1,5 +1,6 @@
 #pragma once
 
+#define MK_3_SPEED
 #undef RGBLIGHT_ANIMATIONS
 #ifdef AUDIO_ENABLE
     #define STARTUP_SONG SONG(PREONIC_SOUND)

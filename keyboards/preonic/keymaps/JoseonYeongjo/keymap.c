@@ -151,20 +151,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,-----------------------------------------------------------------------------------.
  * |      | Num7 | Num8 | Num9 | Num/ |Rhino1| F13  | F14  | F15  | F16  | F17  | F18  |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |AltTab| Num4 | Num5 | Num6 | Num* | Bksp | F19  | F20  | F21  | F22  | F23  | F24  |
+ * |      | Num4 | Num5 | Num6 | Num* | Bksp |MsWhUp|  M1  | MsUp |  M2  |      |      |
  * |------+------+------+------+------+-------------+------+------+------+------+------|
- * |      | Num1 | Num2 | Num3 | Num- | Del  |      |      |      |      |      |      |
+ * |      | Num1 | Num2 | Num3 | Num- | Del  |MsWhDn|MsLeft|MsDown|MsRite|      |      |
  * |------+------+------+------+------+------|------+------+------+------+------+------|
- * |      | Num0 | Num. |NumEnt| Num+ |      |      |      |      |      |      |      |
+ * |CapsLk| Num0 | Num. |NumEnt| Num+ |      |      |MsSpd0|MsSpd1|MsSpd2|      |      |
  * |------+------+------+------+------+------+------+------+------+------+------+------|
  * |      |      |      |      |      |             |      |      |      |      |      |
  * `-----------------------------------------------------------------------------------'
  */
 [_LOWER] = LAYOUT_preonic_grid(
   _______,   KC_P7,   KC_P8,   KC_P9, KC_PSLS, OSL(_RHINO), KC_F13, KC_F14, KC_F15, KC_F16,  KC_F17,  KC_F18,
-  LALT(KC_TAB), KC_P4, KC_P5,  KC_P6, KC_PAST, KC_BSPC,  KC_F19,  KC_F20,  KC_F21,  KC_F22,  KC_F23,  KC_F24,
-  _______,   KC_P1,   KC_P2,   KC_P3, KC_PMNS,  KC_DEL, _______, _______, _______, _______, _______, _______,
-  _______,   KC_P0, KC_PDOT, KC_PENT, KC_PPLS, _______, _______, _______, _______, _______, _______, _______,
+  _______,   KC_P4,   KC_P5,   KC_P6, KC_PAST, KC_BSPC, KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, _______, _______,
+  _______,   KC_P1,   KC_P2,   KC_P3, KC_PMNS,  KC_DEL, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,
+  KC_CAPS,   KC_P0, KC_PDOT, KC_PENT, KC_PPLS, _______, _______, KC_ACL0, KC_ACL1, KC_ACL2, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -275,7 +275,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case _QWERTY:
     case _COLEMAK:
     case _DVORAK:
-      rgblight_setrgb(0x50, 0xFF, 0xFF);
+      rgblight_setrgb(0x58, 0xFF, 0xFF);
       break;
     case _NOINPUT:
       rgblight_setrgb(0xFF, 0x00, 0x00);
