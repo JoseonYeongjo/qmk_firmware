@@ -22,6 +22,7 @@ enum preonic_layers {
   _COLEMAK,
   _DVORAK,
   _NOINPUT,
+  _1HAND,
   _RHINO,
   _LOWER,
   _RAISE,
@@ -63,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL,
   KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_QUOT,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH,   KC_ENT,
-  KC_LCTL, RGB_TOG, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  KC_LCTL, TT(_1HAND), KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Colemak
@@ -84,7 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_G,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_DEL,
   KC_ESC,  KC_A,    KC_R,    KC_S,    KC_T,    KC_D,    KC_H,    KC_N,    KC_E,    KC_I,    KC_O,    KC_QUOT,
   KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_K,    KC_M,    KC_COMM, KC_DOT, KC_SLSH,   KC_ENT,
-  KC_LCTL, RGB_TOG, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  KC_LCTL, TT(_1HAND), KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* Dvorak
@@ -105,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,  KC_QUOT, KC_COMM, KC_DOT,  KC_P,    KC_Y,    KC_F,    KC_G,    KC_C,    KC_R,    KC_L,    KC_DEL,
   KC_ESC,  KC_A,    KC_O,    KC_E,    KC_U,    KC_I,    KC_D,    KC_H,    KC_T,    KC_N,    KC_S,    KC_SLSH,
   KC_LSFT, KC_SCLN, KC_Q,    KC_J,    KC_K,    KC_X,    KC_B,    KC_M,    KC_W,    KC_V,    KC_Z,    KC_ENT,
-  KC_LCTL, RGB_TOG, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+  KC_LCTL, TT(_1HAND), KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
 ),
 
 /* NoInput
@@ -127,6 +128,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
     KC_NO,   KC_NO,   KC_NO,   KC_NO,   LOWER,   KC_NO,   KC_NO,   RAISE,   KC_NO,   KC_NO,   KC_NO,   KC_NO
+),
+
+/* One Handed
+ * ,-----------------------------------------------------------------------------------.
+ * |      |   6  |   7  |   8  |   9  |   0  |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |   Y  |   U  |   I  |   O  |   P  |      |      |      |      |      |      |
+ * |------+------+------+------+------+-------------+------+------+------+------+------|
+ * |      |   H  |   J  |   K  |   L  |   ;  |      |      |      |      |      |      |
+ * |------+------+------+------+------+------|------+------+------+------+------+------|
+ * |      |   N  |   M  |   ,  |   .  |   /  |      |      |      |      |      |      |
+ * |------+------+------+------+------+------+------+------+------+------+------+------|
+ * |      |      |      |      |      |             |      |      |      |      |      |
+ * `-----------------------------------------------------------------------------------'
+ */
+[_1HAND] = LAYOUT_preonic_grid(
+  _______,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0, _______, _______, _______, _______, _______, _______,
+  _______,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, _______, _______, _______, _______, _______, _______,
+  _______,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, _______, _______, _______, _______, _______, _______,
+  _______,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
 /* Rhino
@@ -296,22 +318,25 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     case _QWERTY:
     case _COLEMAK:
     case _DVORAK:
-      rgblight_setrgb(0x60, 0xFF, 0xFF);
+      rgblight_setrgb(0x58, 0xFF, 0xFF);
       break;
     case _NOINPUT:
       rgblight_setrgb(0xFF, 0x00, 0x00);
+      break;
+    case _1HAND:
+      rgblight_setrgb(0xDD, 0xFF, 0x00);
       break;
     case _RHINO:
       rgblight_setrgb(0x00, 0xFF, 0x00);
       break;
     case _LOWER:
-      rgblight_setrgb(0x60, 0x00, 0xFF);
+      rgblight_setrgb(0x00, 0xFF, 0xFF);
       break;
     case _RAISE:
       rgblight_setrgb(0xFF, 0xCA, 0x00);
       break;
     case _ADJUST:
-      rgblight_setrgb(0x00, 0xFF, 0xFF);
+      rgblight_setrgb(0x80, 0x00, 0xFF);
       break;
   }
   return state;
