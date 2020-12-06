@@ -324,7 +324,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
       rgblight_setrgb(0xFF, 0x00, 0x00);
       break;
     case _1HAND:
-      rgblight_setrgb(0xDD, 0xFF, 0x00);
+      rgblight_setrgb(0x60, 0xFF, 0x00);
       break;
     case _RHINO:
       rgblight_setrgb(0x00, 0xFF, 0x00);
