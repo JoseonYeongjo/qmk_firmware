@@ -39,7 +39,8 @@ enum preonic_keycodes {
   RAISE,
   RHBOX,
   RHRECT,
-  RHLINE
+  RHLINE,
+  RHMOVE
 };
 
 float NOINPUTsong[][2] = SONG(NOINPUT_SOUND);
@@ -168,7 +169,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   _______,  RHLINE, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______,  RHRECT, _______, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-  _______, _______, _______, _______, _______,   RHBOX, _______, _______, _______, _______, _______, _______,
+  _______,  RHMOVE, _______, _______, _______,   RHBOX, _______, _______, _______, _______, _______, _______,
   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
 ),
 
@@ -309,6 +310,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           }
           return false;
           break;
+        case RHMOVE:
+          if (record->event.pressed) {
+            SEND_STRING("! _Move ");
+          }
+          return false;
+          break;
       }
     return true;
 };
@@ -324,7 +331,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
       rgblight_setrgb(0xFF, 0x00, 0x00);
       break;
     case _1HAND:
-      rgblight_setrgb(0x60, 0xFF, 0x00);
+      rgblight_setrgb(0x40, 0xFF, 0x00);
       break;
     case _RHINO:
       rgblight_setrgb(0x00, 0xFF, 0x00);
